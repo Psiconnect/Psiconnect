@@ -68,6 +68,7 @@ const handleInputDeletedAvatar = () => {
     img.value = '';
 }
 const handleInputChangeAvatar = (e) =>{
+    
     if(!e.target.files[0]) return
     setRegister({
         ...register,
@@ -76,12 +77,10 @@ const handleInputChangeAvatar = (e) =>{
     })
 }
 const handleInputChange = (e) => {
-    console.log(register)
     setRegister({
         ...register,
         [e.target.name] : e.target.value,
     })
-    console.log(register)
 }
 const handleInputSkillsChange = (e) =>{
     let optionSkills = document.querySelector(`#${e.target.value}`)
