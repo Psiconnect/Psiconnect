@@ -11,20 +11,20 @@ const [ switchRequest, setSwitchRequest ] = useState(false)
 const [ response, setResponse ] = useState(null)
 const [ confirmToken, setConfirmToken ] = useState(null)
 
-useEffect(()=>{
-    if(!switchRequest){
-        confirmEmailClient({
-            state: setResponse,
-            token:token,
-            type:'local',
-            userType:'professional'
-        })
-    }else setSwitchRequest(true)
-},[])
-useEffect(()=>{
-    if(response?.status === 200) setConfirmToken(true)
-    else if(response !== null) setConfirmToken(false)
-},[response])
+// useEffect(()=>{
+//     if(!switchRequest){
+//         confirmEmailClient({
+//             state: setResponse,
+//             token:token,
+//             type:'local',
+//             userType:'professional'
+//         })
+//     }else setSwitchRequest(true)
+// },[])
+// useEffect(()=>{
+//     if(response?.status === 200) setConfirmToken(true)
+//     else if(response !== null) setConfirmToken(false)
+// },[response])
 
 if(confirmToken === null){
     return(
