@@ -16,6 +16,7 @@ import Asistencia from "./views/Asistencia/Asistencia";
 import ProfileProfessional from "./views/ProfileProfessional/ProfileProfessional";
 import Chat from "./components/Chat/Chat";
 import { ProSidebarProvider } from "react-pro-sidebar";
+import ErrorPage from './components/ErrorPage/ErrorPage.jsx'
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
       <NavBar />
       <Routes>
-        <Route path={'/profesional/postRegister'} element={<PostRegisterPsico />} /> 
+        <Route path='/profesional/postRegister' element={<PostRegisterPsico />} /> 
         <Route path="/" element={<Home />} />
         <Route path="/Asistencia" element={<Asistencia />} />
         <Route path="/registerProfesional" element={<RegisterProfesional />} />
@@ -50,7 +51,8 @@ function App() {
         <Route path="/Professionals/:area" element={<Professionals />} />
         <Route path='/Formreview/:id' element={<Formreview />} />
         <Route path='/professionalProfile/:section' element={<ProSidebarProvider><ProfileProfessional/></ProSidebarProvider>}/>
-        <Route path='/userprofile' element={<ProfileUser/>}/>
+        <Route path='/userProfile/profile' element={<ProfileUser/>}/>
+        <Route path='*' element={<ErrorPage/>}/>
       
       </Routes>
       {pathname.split('/')[1] !== 'professionalProfile' &&   <Footer />}
