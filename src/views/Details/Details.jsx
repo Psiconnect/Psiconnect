@@ -11,10 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import FormModal from "../../components/modals/Modals";
 import {
   createChat,
-  getMessageOfChat,
-  sendMessage,
+
 } from "../../features/firebase/chatsFeatures";
-import Chat from "../../components/Chat/Chat";
 
 export default function Details() {
   const [professional, setProfessional] = useState({});
@@ -131,7 +129,7 @@ export default function Details() {
 
       <div className={style.container__botttom}>
         <div className={style.calendary__box}>
-          <Calendary params={professional.id} />
+          <Calendary professionalId={professional.id} />
         </div>
         <div className={style.pagar}>
         

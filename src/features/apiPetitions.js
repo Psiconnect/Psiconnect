@@ -174,7 +174,7 @@ export async function verifyTokenPostRegister(token){
   try {
     const request = await axios.get(`/professional/token/postRegister`,{
       headers: { pos: `Bearer ${token}`,}
-    },{});
+    });
     return request;
   } catch (error) {
     return error.response;
@@ -182,16 +182,13 @@ export async function verifyTokenPostRegister(token){
 }
 
 export async function createProfessionalReview (id, body){
-    
   try {
       const createReview = await axios.post(`/review/${id}`, body)
       return createReview
-
   }catch (error){
     console.log(error.response.data)
   }
 }
-
 
 export async function requestConsultation(body){
   try {
@@ -207,8 +204,8 @@ export async function requestConsultation(body){
 
 export async function postRegisterProfesional(body){
   try{
-    const request = await axios.apply('/professional/descriptionProfesional', body,{
-        headers: { post: `Bearer ${token}` },
+    const request = await axios.put('/professional/descriptionProfesional', body, {
+        headers: { pos: `Bearer ${token}` },
     });
     return request.data
   }catch(error){
