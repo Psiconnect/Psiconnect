@@ -46,7 +46,7 @@ export async function profLogin(body) {
 
 export async function profUpdate(body){
   try {
-    const petition= await axios.put('/professional/update/id', payload,{
+    const petition= await axios.put('/professional/update/id', body,{
       headers: { authorization: `Bearer ${localStorage.getItem("profTkn")}` },
     } );
     type === "local" ? state(petition?.data) : state(setUser({...petition?.data, rol: 'professional'}));
