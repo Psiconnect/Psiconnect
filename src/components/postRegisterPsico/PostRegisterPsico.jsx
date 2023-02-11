@@ -324,8 +324,8 @@ const handleInputAreasChange = (e) => {
                     />
 
                     <input 
-                    disabled={Object.keys(errors).at(0)? true : false}
-                    className={Object.keys(errors).at(0)? style.inputSubmitDisabled : style.inputSubmit }
+                    disabled={errorsCheck()? true : false}
+                    className={errorsCheck()? style.inputSubmitDisabled : style.inputSubmit }
                     type='submit' 
                     value='Actualizar' 
                     />

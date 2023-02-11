@@ -46,8 +46,11 @@ export async function profLogin(body) {
 
 export async function profUpdate(body){
   try {
-    const petition= await axios.put('/professional/descriptionProfesional', body);
-    localStorage.setItem("profTkn", petition?.data);
+    const petition= await axios.put('/professional/update/id', payload,{
+      headers: { authorization: `Bearer ${localStorage.getItem("profTkn")}` },
+    } );
+    type === "local" ? state(petition?.data) : state(setUser({...petition?.data, rol: 'professional'}));
+    console.log(petition?.data)
     return petition
 
   } catch (error) {
@@ -204,7 +207,7 @@ export async function requestConsultation(body){
 
 export async function postRegisterProfesional(body){
   try{
-    const request = await axios.put('/professional/descriptionProfesional', body, {
+    const request = await axios.put('/professional/descriptionProfesional', body,{
         headers: { pos: `Bearer ${token}` },
     });
     return request.data
@@ -212,3 +215,33 @@ export async function postRegisterProfesional(body){
     return error.data
   }
 };
+export async function getProfessionalConsults(professionalId, state){
+  try {
+    const response = await axios.get(`/consult/professional/${professionalId}`)
+    return state(response?.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// export async function getAllProfessional(state){
+//   try {
+//     const peticion = await axios.get(`/professional`);
+//     console.log(peticion);
+//     type === "local" ? state(peticion?.data) : state(setAllProfessional(peticion?.data));
+
+//   } catch (error) {
+//     return error.response;
+//   }
+// } 
+
+
+
+export async function getUserById(userID, state){
+  try {
+    const response = await axios.get(`/user/${userID}`)
+    return state(response?.data)
+  } catch (error) {
+    console.log(error)
+  }
+}
