@@ -24,13 +24,17 @@ export default function Hero() {
             <img className={style.img} src={'https://w7.pngwing.com/pngs/427/179/png-transparent-brain-character-illustration-brain-learning-cognitive-training-mind-color-creative-mind-thinking-color-splash-orange-people.png'} alt="" />
           </div>
           <div className={style.left}>
-            <h2>{!user ? "Registrate!" : "Agenda!"}</h2>
+            {/* <h2>{!user ? "Registrate!" : "Agenda!"}</h2> */}
+            <h2 className={style.h2_1}> Fortificando mentes,</h2> 
+            <h2 className={style.h2_2}> transformando vidas.</h2>
             <h4 className={style.heroH4}>
-              Estamos para ayudarte <br /> Nuestros profesionales se conectan del todo el mundo para vos
+              Recibe la atención que te mereces.
             </h4>
+            {!user && 
             <button className={style.button} onClick={openModal}>
-              Agendar
-            </button>
+              Empieza ahora
+            </button>}
+            
           </div>
         </div>
       </div>
