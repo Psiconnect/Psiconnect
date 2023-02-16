@@ -16,8 +16,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-height: 500px;
-  margin-top: 30%;
+  width: 40%;
+
 }
 .img {
   border-radius: 50%;
@@ -48,7 +48,7 @@
   flex-direction: column;
   align-items: flex-start;
   align-self: center;
-  width: 90%;
+  width: 70%;
 }
 .h2_1 {
   text-align: start;
@@ -130,6 +130,7 @@
 .heroContainer {
   display: flex;
   flex-direction: row-reverse;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  padding: 5%;
 }
 
