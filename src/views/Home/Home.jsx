@@ -2,11 +2,13 @@ import AreaSliderFilter from "../../components/AreaSliderFilter/AreaSliderFilter
 import Hero from "../../components/Hero/Hero";
 import HomeInformations from "../../components/HomeIformations/HomeInformations";
 import style from "./home.module.css";
+import About from "../../components/About/About";
 
 export default function Home() {
   return (
     <div className={style.container}>
       <Hero />
+      <About/>
       <HomeInformations />
       <AreaSliderFilter />
     </div>

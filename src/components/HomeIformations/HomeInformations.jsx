@@ -2,6 +2,7 @@ import style from "./HomeInformations.module.css";
 import conectateimg from '../../assets/Conectate.svg';
 import agendaimg from '../../assets/Agenda.svg';
 import especialistaimg from '../../assets/Especialista.svg';
+import About from "../About/About";
 
 
 export default function HomeInformations() {
@@ -44,6 +45,7 @@ export default function HomeInformations() {
           </div>
         </div>
       </div>
+     
     </div>
   );
 }
