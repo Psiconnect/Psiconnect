@@ -27,7 +27,7 @@ export default function CardConsult({consult}) {
             {user &&
             <div>
                 <p><b>Nombre: </b>{user.name}</p>  
-                <p><b>Apelido: </b>{user.lastName}</p>
+                <p><b>Apellido: </b>{user.lastName}</p>
             </div>
             }
         </div>
