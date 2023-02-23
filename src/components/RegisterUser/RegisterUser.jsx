@@ -92,7 +92,7 @@ export default function RegisterUser({ closeModal,setSwitcherResponsive }) {
         })
       )
       .then(() => closeModal(null))
-      .catch(e => console.log('error'))
+      .catch(e => e)
     } else   swal({
       title: "Error!",
       text: Object.values(errors)[0],

@@ -1,12 +1,23 @@
-.spanError{
-    color:#f11010;
-    font-size:small;
-    margin: 0.5%;
+.errorsText{
+    text-align: start;
+    color: rgb(249, 13, 13);
+    font: var(--paragraph);
+    font-size: large;
+    max-width: 55%;
+    margin-bottom: 8px;
 }
 .inputError{
-    border: 1.5px solid rgb(227, 67, 67)
+    border: 1.5px solid rgb(249, 13, 13);
 }
-
+.label{
+    width: 100%;
+    text-align: center;
+    font: var(--h1Title);
+    font-size: 1.8rem;
+    padding-bottom:0rem;
+    padding-top:0rem;
+    margin: 4rem 0rem 0rem 0rem; 
+}
 .divContainer{
     display: flex;
     justify-content: center;
@@ -15,7 +26,6 @@
     padding-top:2rem;
     padding-bottom:8rem;
     background-color: #f4f1bb;
-   
 }
 .form{
     display: flex;
@@ -28,98 +38,102 @@
     border-style: dotted;
     background-color:#f4f1bb;
 }
-.form .inputs{
-    font-size: medium;
-    font-family: 'Poppins', sans-serif;
+.inputs{
+    border-radius: 0.5rem;
+    border: 2px solid var(--cadetblue);
+    font: var(--paragraph);
+    font-size: 1.1rem;
+    margin: 0rem;
     width: 25rem;
     box-shadow: 0px 0px 10px #dbdbdb;
+    transition: box-shadow .6s;
 }
 
-.form .inputsErrors{
-    font-size: medium;
-    font-family: 'Poppins', sans-serif;
+.inputsErrors{
+    border-radius: 0.5rem;
+    border-right: 0px solid transparent;
+    font: var(--paragraph);
+    font-size: 1.1rem;
+    margin: 0rem;
     width: 25rem;
+    box-shadow: 0px 0px 10px #dbdbdb;
     border: 1px solid red;
-    box-shadow: none;
-    margin: 0px;
+    transition: box-shadow .6s;
 }
-.form .spanErrors{
+.spanErrors{
     font-size: x-small;
     color: red;
     font-family: 'Poppins', sans-serif;
     font-style: italic;
     margin-bottom: 0%;
 }
-
-.divContainer .form .p{
-    color:cadetblue;
-    font-weight: 500;
+.p{
+    color:var(--cadetblue);
+    font: var(--paragraph);
+    font-size: large;
     max-width: 55%;
     text-align: center;
 }
-.form .label{
+.labelInicio{
     text-align: center;
     width: 100%;
-    font-weight: 500;
-    font-size: 1.4rem;
-    margin: 2.5rem 0px 0rem 0px;
-}
-.divContainer .form .labelInicio{
-    text-align: center;
-    width: 100%;
-    font-weight: 500;
-    font-size: 1.4rem;
+    font: var(--h1Title);
+    font-size: 2rem;
     margin-top: 1rem;
 }
-.form .inputImage{
-    border:1px solid cadetblue;
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+.inputImage{
+    border: 2px solid var(--cadetblue);
+    margin-top: 1rem;
+    font:var(--paragraph);
+    font-size: large;
     cursor: pointer;
-    color: cadetblue;
-    background-color: white;
-    box-shadow: 0px 0px 10px #dbdbdb;
-    border-radius: 10rem;
-    transition: transform .5s, color .5s, background-color .5s, border .5s ;
+    color: var(--white);
+    background-color: var(--cadetblue);
+    box-shadow: none;
+    border-radius: 1rem;
+    padding: 0.7rem;
+    width: auto;
+    max-width: 98%;
+    transition: background-color .5s, color .5s, transform .5s, color .5s; 
+}
+.inputImage:hover{
+    background-color: var(--white);
+    color: var(--cadetblue);
+    border: 2px solid var(--cadetblue);
+    transform: translateY(-10px);
+    box-shadow: inset 5px 5px 15px rgb(70 70 70 / 12%);
+}
+.inputImageDisabled{
+    border: 2px solid gray;
+    margin-top: 1rem;
+    font:var(--paragraph);
+    font-size: large;
+    color: gray;
+    background-color: var(--white);
+    box-shadow: none;
+    border-radius: 1rem;
+    padding: 0.7rem;
     width: auto;
     max-width: max-content;
 }
-.form .inputImage:hover{
-    transform: translate(0px, -10px);
-    color: white;
-    background-color: cadetblue;
-    box-shadow: 0px 0px 10px #dbdbdb, inset 0px 0px 0px #dbdbdb;
-}
-.form .inputImageDisabled{
-    font-size: 1rem;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
-    color: gray;
-    background-color: white;
-    border: 1px solid gray;
-    box-shadow: none;
-    width: auto;
-}
-.form .inputImageDisabled:hover{
+.inputImageDisabled:hover{
     box-shadow: none;
 }
-.form .divContainerImg{
+.divContainerImg{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50rem;
     height: 16rem;
 }
-.form .divInputsImage{
+.divInputsImage{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     width: 50%;
 }
-
-.form .divContainerImg .divAvatar .avatar{
+.avatar{
     object-fit: cover;
     object-position: center;
     image-resolution: 720px;
@@ -134,16 +148,36 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-
-.form .divContainerImg .divAvatar{
+.divAvatar{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
 }
-
-.form .divSkills{ 
+.inputAvatarError{
+    font:var(--hTitle);
+    font-size: large;
+    cursor: pointer;
+    background-color: var(--cadetblue);
+    box-shadow: none;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    width: auto;
+    max-width: 98%;
+    border: 2px solid rgb(223, 5, 5);
+    color: white;
+    padding: 0.7rem;
+    transition: background-color .5s, color .5s, transform .5s;
+}
+.inputAvatarError:hover{
+    transform: translate(0px, -10px);
+    padding: 0.7rem;
+    background-color: var(--white);
+    color: rgb(223, 5, 5);
+    box-shadow: inset 5px 5px 15px rgb(70 70 70 / 12%);
+}
+.divContainerMapCards{ 
     margin-top: 1rem;
     width: auto;
     height: auto;
@@ -154,9 +188,9 @@
     justify-content: center;
     border: solid #ffa8b6;
     outline: none;
-    box-shadow: 9px 9px 15px #dedede, -3px -6px 18px #f2f1f1;
+    box-shadow: 0px 0px 12px #dedede;
 }
-.form .divSkills .skillsDivSpan{
+.divContainerCard{
     display: flex;
     align-items: center;
     border: 1px solid black;
@@ -166,11 +200,10 @@
     border-radius: 0.5rem 1rem 1rem 1.3rem;
     transition: transform .5s;
 }
-.form .divSkills .skillsDivSpan .skillsSpanX{
+.xSpanCard{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid gray;
     width: 1.2rem;
     height: 80%;
     margin:0rem 0.1rem 0rem 0.5rem;
@@ -181,24 +214,37 @@
     border: 1px solid red;
     background-color: white;
 }
-.form .divSkills .skillsDivSpan .skillsSpanX:hover{
+.xSpanCard:hover{
     color:white;
     border: 1px solid red;
     background-color: red;
 }
-.form .containerDescription{
+.containerDescription{
     padding: 1rem;
     width: 65%;
     height: 19rem;
     border-radius: 1rem;
     background-color: white;
-    box-shadow: 0px 0px 12px #dedede;
+    box-shadow: 0px 2px 12px #d4d4d4;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form .containerDescription .description{
+.errorsDescriptionContainer{
+    width: 65%;
+    height: 19rem;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px 2px 12px #d4d4d4;
+    overflow: hidden;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(223, 5, 5);
+}
+.description{
     object-fit: contain;
     min-width: 99%;
     max-width: 99%;
@@ -206,37 +252,144 @@
     max-height: 100%; 
     overflow-y: scroll;
     overflow-x: hidden;
+    font:var(--paragraph);
     font-size:medium;
-    font-family: 'Poppins', sans-serif;
     border: none;
     border-radius: 1rem;
     padding: 1rem;
     margin: 1rem;
 }
-.form .select{
+.errorsDescription{
+    width: 65%;
+    text-align: start;
+    font:var(--paragraph);
+    font-size: large;
+    color: rgb(249, 13, 13);
+}
+.select{
     border-radius: 1rem;
-    font-family: 'Poppins', sans-serif;
+    font:var(--paragraph);
+    font-size: 1rem;
     width: auto;
     text-align: center;
     cursor: pointer;
 }
-.form .inputSubmit{
-    margin-top: 5%;
-    width: 8rem;
-    border-radius: 10rem;
-    font-size: medium;
-    font-weight: 500;
-    font-family: 'Poppins', sans-serif;
+.errorsSelect{
+    border-radius: 1rem;
+    font:var(--paragraph);
+    font-size: 1rem;
+    width: auto;
+    text-align: center;
     cursor: pointer;
-    color: cadetblue;
-    border:1px solid cadetblue;
+    border-color: rgb(223, 5, 5);
+}
+.inputSubmit{
+    margin: 10% 0%;
+    width: 8rem;
+    border-radius: 1rem;
+    font:var(--paragraph);
+    font-size: large;
+    cursor: pointer;
+    color: var(--white);
+    border: 2px solid var(--cadetblue);
+    background-color: var(--cadetblue);
+    box-shadow: 0px 0px 10px #dbdbdb;
+    padding: 0.7rem;
+    width: 9rem;
+    max-width: 90%;
+    transition: border .5s, background-color .5s, color .5s, transform .5s; 
+}
+.inputSubmit:hover{
+    background-color: var(--white);
+    color: var(--cadetblue);
+    border: 2px solid var(--cadetblue);
+    transform: translateY(-10px);
+}
+.inputSubmitDisabled{
+    margin: 10% 0%;
+    width: 9rem;
+    border-radius: 1rem;
+    font:var(--paragraph);
+    font-size: large;
+    font-weight: 500;
+    color: gray;
+    border:2px solid gray;
     background-color: white;
     box-shadow: 0px 0px 10px #dbdbdb;
-    transition: transform .5s, color .5s, background-color .5s, border .5s ;
 }
-.form .inputSubmit:hover{
-    transform: translate(0px, -10px);
-    color: white;
-    background-color: cadetblue;
-    box-shadow: none;
+.inputSubmitDisabled:hover{
+    box-shadow: 0px 0px 10px #dbdbdb;
 }
+
+
+@media (max-width: 1025px) {
+    .containerDescription, .errorsDescriptionContainer{
+        min-width: 85%;
+        max-width: 85%;
+    }
+   .errorsDescription{
+    width: 85%
+   }
+   .divContainer .p, .errorsText{
+    max-width: 85%
+}
+}
+  @media (max-width: 920px) {
+    .divContainerImg{
+        flex-direction: column;
+        width: 100%;
+        height: 28rem;
+      }
+      .divAvatar{
+        width: 100%;
+        height: 60%;
+    }
+    .divInputsImage{
+        width: 100%;
+        height: 45%;
+    } 
+  }
+    @media (max-width: 768px) {
+        .divContainer .p, .errorsText{
+            max-width: 92%;
+            font-size: medium;
+        }
+    }
+        @media (max-width: 426px) {
+            .inputImage, .inputImageDisabled , .inputAvatarError{
+                font-size: medium;
+                max-width: 90%;
+            }
+            .select , .errorsSelect{
+                font-size: 0.9rem;
+            }
+            .inputs, .inputsErrors{
+                width: 90%;
+                font-size: 1rem;
+            }
+            .inputSubmitDisabled, .inputSubmit{
+                font-size: medium;
+                margin: 20% 0%;
+            }
+            .divContainer .p, .errorsText{
+                max-width: 98%;
+                font-size: 0.9rem;
+            }
+            .divContainer{
+                margin-top:7rem; 
+                margin-bottom:5rem;
+            }
+            .label{
+                font-size: 1.6rem;
+                margin: 2.5rem 0rem 0rem 0rem; 
+            }
+            .divContainer .divContainerMapCards{
+                max-width: 100%;
+            }
+        }
+            @media (max-width: 321px) {
+            .divAvatar .avatar{
+                    width:14rem;
+                    height: 13.6rem;
+                }
+            }

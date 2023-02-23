@@ -9,7 +9,6 @@ import {
 } from "../../../features/apiPetitions.js";
 import style from "./Form.module.css";
 import swal from "sweetalert";
-import{ label, p, errorsText } from '../../../components/postRegisterPsico/PostRegisterPsico.module.css';
 import{
     inputs,
     inputsErrors
@@ -134,11 +133,17 @@ const uploadImage= async (file)=>{
     }
   }
 
+const inputErrorChecker = () => {
+  return  Object.values(form).some(el=> (el === '' || el.length === 0 )) &&
+              Object.keys(errors).at(0) || Object.keys(errors).at(0)? 
+                  true : false;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(validationsForm.avatar(form))
     const newImage= await uploadImage(form.avatar)
-    if (!Object.keys(errors).at(0)) {
+    if (!inputErrorChecker()) {
       profUpdate({
         state: dispatch,
         type: 'global',
@@ -181,7 +186,7 @@ const uploadImage= async (file)=>{
           </div>
           <div className={style.divInputsImage}>
             <input
-              className={style.inputImage}
+              className={errors.avatar? style.inputAvatarError : style.inputImage}
               id="imageAvatar"
               type="file"
               accept="image/*"
@@ -209,8 +214,8 @@ const uploadImage= async (file)=>{
           *CONSEJO* trata de añadir datos que creas importantes y relevantes de
           tu perfil
         </p>
-        <span className={style.spanError}>{errors.description}</span>
-        <div className={style.containerDescription}>
+        <span className={style.errorsDescription}>{errors.description}</span>
+        <div className={errors.description? style.errorsDescriptionContainer : style.containerDescription}>
           <textarea
             name="description"
             value={form.description || ""}
@@ -222,9 +227,9 @@ const uploadImage= async (file)=>{
 
         <label className={style.label}>Areas</label>
         <p className={style.p}>*selecciona las areas en las que trabajas</p>
-        <span className={style.spanError}>{errors.areas}</span>
+        <span className={style.errorsText}>{errors.areas}</span>
         <select
-          className={style.select}
+          className={errors.areas? style.errorsSelect : style.select}
           name="areas"
           onChange={(e) => handleSelectChange(e)}
           required
@@ -241,15 +246,15 @@ const uploadImage= async (file)=>{
             );
           })}
         </select>
-        <div className={style.divSkills}>
+        <div className={style.divContainerMapCards}>
           {form.areas?.map((el) => {
             return (
-              <div key={el} className={style.skillsDivSpan}>
+              <div key={el} className={style.divContainerCard}>
                 <span id="areaid" value={el}>
                   {el}
                 </span>
                 <span
-                  className={style.skillsSpanX}
+                  className={style.xSpanCard}
                   onClick={() =>
                     handleSelectChange({ target: { value: el , name:'areas'} })
                   }
@@ -265,9 +270,9 @@ const uploadImage= async (file)=>{
         <p className={style.p}>
           *selecciona las habilidades que consideras tener
         </p>
-        <span className={style.spanError}>{errors.skills}</span>
+        <span className={style.errorsText}>{errors.skills}</span>
         <select
-          className={style.select}
+          className={errors.skills? style.errorsSelect : style.select}
           name="skills"
           onChange={(e) => handleSelectChange(e)}
           required
@@ -284,13 +289,13 @@ const uploadImage= async (file)=>{
             );
           })}
         </select>
-        <div className={style.divSkills}>
+        <div className={style.divContainerMapCards}>
           {form.skills?.map((el) => {
             return (
-              <div className={style.skillsDivSpan}>
+              <div className={style.divContainerCard}>
                 <span>{el}</span>
                 <span
-                  className={style.skillsSpanX}
+                  className={style.xSpanCard}
                   onClick={() =>
                     handleSelectChange({ target: { value: el , name: 'skills'} })
                   }
@@ -307,7 +312,7 @@ const uploadImage= async (file)=>{
           *copie y pega el link de tu perfil de Linkedin
         </p>
         <input
-          className={errors.linkedin ? style.inputError : style.inputs}
+          className={errors.linkedin ? style.inputsErrors : style.inputs}
           type="text"
           name="linkedin"
           value={form.linkedin}
@@ -315,11 +320,11 @@ const uploadImage= async (file)=>{
           onChange={handleInputChange}
         />
         
-        <label className={label}> Precio  </label>
-            <p className={p}>
+        <label className={style.label}> Precio  </label>
+            <p className={style.p}>
                 *Selecciona el precio en USD (dólares estadounidenses) por hora de tus consultas
             </p>
-            <span className={errorsText}>
+            <span className={style.errorsText}>
                 {errors.price}
             </span>
             <input
@@ -330,8 +335,11 @@ const uploadImage= async (file)=>{
             placeholder='$15'
             onChange={handleInputChange}
             />
-{console.log(errors)}
-        <input className={style.inputSubmit} type="submit" value="Actualizar" />
+        <input 
+        disabled={inputErrorChecker()}
+        className={inputErrorChecker()? style.inputSubmitDisabled : style.inputSubmit }
+        type="submit" 
+        value="Actualizar" />
       </form>
     </div>
   );
