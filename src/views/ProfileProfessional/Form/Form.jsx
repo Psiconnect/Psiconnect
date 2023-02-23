@@ -174,7 +174,7 @@ const inputErrorChecker = () => {
         <label className={style.labelInicio}>
           {user.name} {user.lastName}
         </label> <br />
-        <label className={style.label}>Avatar</label>
+        <label className={style.labelAvatar}>Avatar</label>
         <p className={style.p}>*selecciona un imagen para tu foto de perfil</p>
         <div className={style.divContainerImg}>
           <div className={style.divAvatar}>

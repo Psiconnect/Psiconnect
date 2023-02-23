@@ -7,6 +7,7 @@ import style from "./Users.module.css";
 import SearchBar from "../Professionals/SearchBar.jsx";
 import { getProfessionalsFilters } from "../../features/apiPetitions.js";
 import PriceOrdering from "../Professionals/PriceOrdering.jsx";
+import CalificationOrdering from "../Professionals/CalificationOrdering.jsx";
 
 export default function Users() {
   const professionals = useSelector(
@@ -23,6 +24,7 @@ export default function Users() {
       lastName: null,
     });
   }, []);
+  const [selectTwo, setSelectTwo] = useState("Ordena por calificacion");
   const [select, setSelect]= useState('Ordena por precio')
   const [currentPage, setCurrentPage] = useState(1);
   const [ProfessionalsPerPage, setProfessionalsPerPage] = useState(8);
@@ -40,7 +42,10 @@ export default function Users() {
       <div className={style.containerSearchBar}>
         <SearchBar setSelect={setSelect}/>
       </div>
-        <PriceOrdering select={select} setSelect={setSelect}/>
+      <div className={style.filtersDiv}>
+        <PriceOrdering select={select} setSelect={setSelect} />
+        <CalificationOrdering select={selectTwo} setSelect={setSelectTwo} />
+      </div>
       </div>
       <div className={style.cardContainer}>
         {professionals &&
