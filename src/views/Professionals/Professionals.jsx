@@ -81,7 +81,7 @@ export default function Professionals() {
                 lastName={e.lastName}
                 areas={e?.areas || 'Depresion'}
                 avatar={e.avatar}
-                skills={e?.skills || 'AMABLE'}
+                skills={e?.skills}
                 price={e?.price}
                 score={e?.score}
               />
