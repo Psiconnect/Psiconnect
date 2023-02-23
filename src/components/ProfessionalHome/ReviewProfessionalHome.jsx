@@ -22,7 +22,6 @@ export default function ReviewProfessionalHome () {
     const orderReview = professionalReview?.sort((a,b) => b.score - a.score) 
     const filterOrderReview = orderReview?.filter( el => el.score >= 4)
     const sliceReview = filterOrderReview?.slice(0,6)
-    console.log(sliceReview, 'slice')
 
     useEffect(() => {
     getAllReview(setProfessionalReview)

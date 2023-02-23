@@ -9,8 +9,8 @@ export async function userRegister(body) {
     localStorage.setItem("tkn", peticion?.data);
     return peticion;
   } catch (error) {
-    errorMenssage(error.response.data);
-    throw new Error(error.response.data);
+    errorMenssage(error.response.data.errors[0] || error.response.data.data);
+    throw new Error(error.response.data.errors[0] || error.response.data.data);
   }
 }
 export async function professionalRegister(body) {
@@ -381,6 +381,7 @@ export default async function postImageCloudinary(file, image) {
 
 export async function autoLoginAfterPostRegister(token) {
   localStorage.setItem("profTkn", token);
+  localStorage.clear()
   window.location.pathname = "/";
   window.location.reload();
 }
@@ -407,11 +408,17 @@ export async function verifyTokenForgotPassword(token) {
     const request = await axios.get("/professional/token/forgetPassword", {
       headers: { 'reset': `Bearer ${token}` },
     });
-    return request;
+    if(request.data) return request
+    const requestTwo = await axios.get('/user/token/forgetPassword', {
+      headers: { 'reset': `Bearer ${token}` },
+    });
+    if(requestTwo.data) return requestTwo
+    return request
   } catch (error) {
-    return error;
+    return console.log(error);
   }
 }
+
 export async function forgotPasswordProfessional(token, body) {
   try {
     const request = await axios.put(
@@ -428,9 +435,7 @@ export async function forgotPasswordProfessional(token, body) {
 }
 export async function forgotPasswordUser(token, body) {
   try {
-    const request = await axios.put("/user/ChangePasswordForget", body, {
-      headers: { 'reset': `Bearer ${token}` },
-    });
+    
     return request;
   } catch (err) {
     return err;
