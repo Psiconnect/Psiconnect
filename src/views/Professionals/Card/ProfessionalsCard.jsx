@@ -11,10 +11,9 @@ export default function ProfessionalsCard({
   score,
   areas,
 }) {
-  console.log(areas, skills)
 if(Array.isArray(skills) || Array.isArray(areas)){
-  areas = areas.map(el => el.area).join()
-  skills = skills.map(el => el.skill).join()
+  if(Array.isArray(areas)) areas = areas.map(el => el.area).join()
+  if(Array.isArray(skills)) skills = skills.map(el => el.skill).join()
 }
   const navigate = useNavigate();
   return (
