@@ -28,7 +28,7 @@ if(Array.isArray(skills) || Array.isArray(areas)){
         <span>{lastName}</span>
       </h2>
       <div className={style.info}>
-        <p><span>Skills:</span> <br /> {skills?.split(',')[0] || 'AMABLE'}</p>
+        <p><span>Skills:</span> <br /> {skills?.split(',')[0]? skills?.split(',')[0] : skills || 'Amable' }</p>
         <p><span>Areas:</span> <br /> {areas?.split(',')[0]|| 'Depresion'}</p>
         <p><span>Precio:</span> <br /> ${price || 15}</p>
         <p><span>Calificación: <br /></span> {score? `${score} /5` : 'Sé el primero en calificar'}</p>
