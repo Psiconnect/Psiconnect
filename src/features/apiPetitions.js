@@ -408,14 +408,12 @@ export async function verifyTokenForgotPassword(token) {
     const request = await axios.get("/professional/token/forgetPassword", {
       headers: { 'reset': `Bearer ${token}` },
     });
-    if(request.data) return request
+    return request;
+  } catch (error) {
     const requestTwo = await axios.get('/user/token/forgetPassword', {
       headers: { 'reset': `Bearer ${token}` },
     });
-    if(requestTwo.data) return requestTwo
-    return request
-  } catch (error) {
-    return console.log(error);
+    return requestTwo;
   }
 }
 
@@ -430,15 +428,14 @@ export async function forgotPasswordProfessional(token, body) {
     );
     return request;
   } catch (err) {
-    return err;
-  }
-}
-export async function forgotPasswordUser(token, body) {
-  try {
-    
-    return request;
-  } catch (err) {
-    return err;
+    const requestTwo = await axios.put(
+      "/user/ChangePasswordForget",
+      body,
+      {
+        headers: { 'reset': `Bearer ${token}` },
+      }
+    );
+    return requestTwo;
   }
 }
 
