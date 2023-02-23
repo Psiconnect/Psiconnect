@@ -21,7 +21,7 @@ export default function CardProfessional(props) {
             <span>Skills:</span> {props.skills.join(', ') + '.'}
           </p>}
           <p>
-            <span>Areas:</span> {props.areas?.slice(0,3).join(', ') + '.'}
+            <span>Areas:</span> {props.areas?.join(', ') + '.'}
           </p>
           <p>
             <span>Precio:</span> ${props.precio || 200}
