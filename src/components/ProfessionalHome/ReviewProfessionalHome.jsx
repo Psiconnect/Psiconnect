@@ -39,7 +39,6 @@ export default function ReviewProfessionalHome() {
               effect="slide"
               loop={true}
               loopAdditionalSlides={1}
-              navigation={true}
             
               breakpoints={{
                 0: {

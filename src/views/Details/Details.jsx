@@ -20,10 +20,11 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import  {
+import {
   getConsultsProfessional,
   getContextProfessional,
 } from "../../features/firebase/calendaryFeatures";
+import LoadingDani from "../../components/Loading/LoadingDani";
 const cerebritomeditando =
   "https://res.cloudinary.com/dcdywqotf/image/upload/v1676483326/Cerebritos%20svg/Cerebritomeditando_iimsr6.svg";
 export default function Details() {
@@ -54,16 +55,17 @@ export default function Details() {
   const { id } = useParams();
   useEffect(() => {
     getProfessionalById(id, setProfessional);
-    getProfessionalReview(id, setReviewProfessional)  
+    getProfessionalReview(id, setReviewProfessional);
     getContextProfessional({
       professionalId: id,
       state: setContextProfessional,
     });
     getConsultsProfessional({ professionalId: id, state: setDaysDisabled });
-    getContextProfessional({ professionalId:id, state: setContextProfessional });
-    
+    getContextProfessional({
+      professionalId: id,
+      state: setContextProfessional,
+    });
   }, [id]);
-
 
   const handleCklicBuscar = (e) => {
     navigate("/Asistencia#searchprofessional");
@@ -71,7 +73,7 @@ export default function Details() {
 
   setTimeout(() => {
     setLoading(false)
-  }, 5000)
+  }, 3000);
 
   const handleClick = (e) => {
     e.preventDefault(e);
@@ -98,19 +100,13 @@ export default function Details() {
         />
 
         <div className={style.reviews}>
-
-          {loading && <p className= {style.cargando}>Cargando calificaciones...</p>}
-
-          {  reviewProfessional && reviewProfessional.length > 0  ?  
-          
-          ( 
+          {reviewProfessional && reviewProfessional.length > 0 ? (
             <Swiper
               modules={[Autoplay, Pagination]}
               autoplay={{
                 delay: 6000,
                 disableOnInteraction: true,
               }}
-              
               pagination={{
                 dynamicBullets: true,
               }}
@@ -119,40 +115,37 @@ export default function Details() {
               slidesPerView={Math.min(reviewProfessional.length, 3)}
               breakpoints={{
                 0: {
-                  slidesPerView: Math.min(reviewProfessional.length, 1), // Muestra 1 tarjeta en pantallas menores a 700px
+                  slidesPerView: Math.min(reviewProfessional.length, 1),
                 },
                 700: {
-                  slidesPerView: Math.min(reviewProfessional.length, 2), // Muestra 2 tarjetas en pantallas entre 700px y 1100px
+                  slidesPerView: Math.min(reviewProfessional.length, 2),
                 },
                 1100: {
-                  slidesPerView: Math.min(reviewProfessional.length, 3), // Muestra 3 tarjetas en pantallas mayores a 1100px
+                  slidesPerView: Math.min(reviewProfessional.length, 3),
                 },
                 1500: {
-                  slidesPerView: Math.min(reviewProfessional.length, 4), // Muestra 3 tarjetas en pantallas mayores a 1100px
+                  slidesPerView: Math.min(reviewProfessional.length, 4),
                 },
-               
               }}
             >
               {reviewProfessional?.map((el) => {
-                return ( 
-                  <SwiperSlide key={el.id} className = {style['swiper-slide']}>  
-                   <div className={style.cardreview}>
-                      <CardReview    
+                return (
+                  <SwiperSlide key={el.id} className={style["swiper-slide"]}>
+                    <div className={style.cardreview}>
+                      <CardReview
                         name={el.username}
                         lastName={el.lastusername}
                         puntualidad={el.puntualidad}
                         trato={el.trato}
                         general={el.general}
                         comments={el.comments}
-                      />   
-                      </div>                 
+                      />
+                    </div>
                   </SwiperSlide>
-                  
                 );
               })}
             </Swiper>
-          
-          ): (
+          ) : (
             <div className={style.sincalificacion}>
               <p className={style.nohaycalf}>
                 **Aún no hay calificaciones para este profesional**
@@ -207,7 +200,6 @@ export default function Details() {
             daysDisabled={daysDisabled || []}
             setOpenLogin={setOpenLogin}
           />
-          
         </div>
         <div className={style.contImg}>
           <img className={style.cerebrito} src={cerebrito} alt="" />
@@ -222,10 +214,10 @@ export default function Details() {
           </div>
           <img className={style.paypal} src={paypal} alt="" />
         </div>
-
       </div>
       {openLogin && <FormModal name="User" set={setOpenLogin} />}
       {modal && <Chat initialValue={modal} />}
+      {loading && <LoadingDani />}
     </>
   );
 }

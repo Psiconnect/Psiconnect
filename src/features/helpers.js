@@ -3,6 +3,6 @@ import { setLoading } from './gobalSlice';
 
 
 export async function loading(){
-    await store.dispatch(setLoading())
+   store.dispatch(setLoading())
     return
 }
