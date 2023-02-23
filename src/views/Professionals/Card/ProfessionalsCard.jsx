@@ -11,10 +11,13 @@ export default function ProfessionalsCard({
   score,
   areas,
 }) {
-if(Array.isArray(skills) || Array.isArray(areas)){
-  if(Array.isArray(areas)) areas = areas.map(el => el.area).join()
-  if(Array.isArray(skills)) skills = skills.map(el => el.skill).join()
-}
+  if(Array.isArray(areas)){
+    areas = areas?.map(el => el.area).join(',')
+  }
+  console.log(skills);
+  if(Array.isArray(skills)){
+    skills = skills?.map(el => el.skill).join(',')
+  }
   const navigate = useNavigate();
   return (
     <div className={style.card} onClick={()=>navigate(`/Details/${id}`)}>
