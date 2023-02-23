@@ -20,11 +20,6 @@
     transition: box-shadow .6s;
 }
 
-@media (max-width: 1050px) {
-
-  }
-  @media (max-width: 768px) {
-  }
     @media (max-width: 426px) {
         .inputs, .inputsErrors{
             width: 90%;
