@@ -18,6 +18,15 @@
     padding-top:0rem;
     margin: 4rem 0rem 0rem 0rem; 
 }
+.labelAvatar{
+    width: 100%;
+    text-align: center;
+    font: var(--h1Title);
+    font-size: 1.8rem;
+    padding-bottom:0rem;
+    padding-top:0rem;
+    margin: 0.5rem 0rem 0rem 0rem; 
+}
 .divContainer{
     display: flex;
     justify-content: center;
@@ -78,8 +87,8 @@
     text-align: center;
     width: 100%;
     font: var(--h1Title);
-    font-size: 2rem;
-    margin-top: 1rem;
+    font-size: 2.2rem;
+    margin: 1rem 0rem 0rem 0rem;
 }
 .inputImage{
     border: 2px solid var(--cadetblue);

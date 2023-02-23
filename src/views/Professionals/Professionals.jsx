@@ -8,7 +8,7 @@ import Pagination from "./pagination.jsx";
 import PriceOrdering from "./PriceOrdering.jsx";
 import SearchBar from "./SearchBar.jsx";
 import AreaSliderFilter from "../../components/AreaSliderFilter/AreaSliderFilter";
-import { orderProfessionalsByPrice } from "../../features/professionalSlice";
+import CalificationOrdering from "./CalificationOrdering";
 
 export default function Professionals() {
   const { area } = useParams();
@@ -35,6 +35,7 @@ export default function Professionals() {
   }, []);
 
   const [select, setSelect] = useState("Ordena por precio");
+  const [selectTwo, setSelectTwo] = useState("Ordena por calificacion");
   const [areas, setAreas] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [ProfessionalsPerPage, setProfessionalsPerPage] = useState(8);
@@ -65,24 +66,27 @@ export default function Professionals() {
         </div>
 
         <PriceOrdering select={select} setSelect={setSelect} />
+        
+        <CalificationOrdering select={selectTwo} setSelect={setSelectTwo} />
+        
       </div>
       <div className={style.cardContainer}>
         {professionals &&
           professionals
             .slice(indexOfFirstProfessional, indexOfLastProfessional)
             .map((e, i) => (
-              <ProfessionalsCard
+            <ProfessionalsCard
                 key={i}
                 id={e.id}
                 name={e.name}
                 lastName={e.lastName}
-                areas={e.areas}
-                avatar={e?.avatar}
-                skills={e.skills}
+                areas={e?.areas || 'Depresion'}
+                avatar={e.avatar}
+                skills={e?.skills || 'AMABLE'}
                 price={e?.price}
                 score={e?.score}
               />
-            ))}
+              ))}
       </div>
       <Pagination
         ProfessionalsPerPage={ProfessionalsPerPage}

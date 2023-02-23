@@ -18,10 +18,10 @@ export default function CardProfessional(props) {
         <p className={style.username}>{`${props.name} ${props.lastName}`}</p>
         <div className={style.data}>
           {props.skills && <p>
-            <span>Skills:</span> {props.skills + ''}
+            <span>Skills:</span> {props.skills.join(', ') + '.'}
           </p>}
           <p>
-            <span>Areas:</span> {props.areas + ''}
+            <span>Areas:</span> {props.areas?.slice(0,3).join(', ') + '.'}
           </p>
           <p>
             <span>Precio:</span> ${props.precio || 200}
@@ -41,7 +41,7 @@ export default function CardProfessional(props) {
           >
             <span>Linkedin:</span> {props.linkedin}
           </p>
-          <p className={style.infprofile}>{props.description}</p>
+          <p className={style.infprofileDescript}>{props.description}</p>
         </div>
       </div>
       <div className={style.moreInfo}>
