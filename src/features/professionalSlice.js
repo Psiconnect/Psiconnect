@@ -24,8 +24,8 @@ const professionalSlice = createSlice({
     orderProfessionalsByCalification(state, {payload}) {
       state.FilterProfessional =
         payload === "desc"
-          ? state.FilterProfessional?.sort((a, b) => parseInt(b.score) - parseInt(a.price))
-          : state.FilterProfessional?.sort((a, b) => parseInt(a.price) - parseInt(b.score));
+          ? state.FilterProfessional?.sort((a, b) => b.score - a.score)
+          : state.FilterProfessional?.sort((a, b) => a.score - b.score);
     },
   },
 });

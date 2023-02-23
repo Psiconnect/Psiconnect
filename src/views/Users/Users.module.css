@@ -116,7 +116,22 @@
   font-style: italic;
 }
 
+.searchBarAndOrder .filtersDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+@media (max-width: 1025px) {
+
+}
 @media (max-width: 600px) {
+  .searchBarAndOrder .filtersDiv{
+    display: 	flex;
+    flex-direction: column;
+  }
   .searchBarAndOrder {
     display: flex;
     flex-direction: column;

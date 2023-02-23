@@ -64,11 +64,10 @@ export default function Professionals() {
         <div className={style.containerSearchBar}>
           <SearchBar area={area} setSelect={setSelect} />
         </div>
-
-        <PriceOrdering select={select} setSelect={setSelect} />
-        
-        <CalificationOrdering select={selectTwo} setSelect={setSelectTwo} />
-        
+        <div className={style.filtersDiv}>
+          <PriceOrdering select={select} setSelect={setSelect} />
+          <CalificationOrdering select={selectTwo} setSelect={setSelectTwo} />
+        </div>
       </div>
       <div className={style.cardContainer}>
         {professionals &&

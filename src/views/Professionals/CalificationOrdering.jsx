@@ -8,17 +8,18 @@ export default function CalificationOrdering(props) {
 
     const handleSelectChange=(e)=>{
         e.preventDefault();
-        props.setSelectTwo(e.target.value)
+        props.setSelect(e.target.value)
+        console.log(e.target.value)
         dispatch(orderProfessionalsByCalification(e.target.value))
       }
 
   return (
-   <div className={style.selectContainer}>
+   <div className={style.selectContainerTwo}>
       <select
       className={style.select}
         name="order"
         id="order"
-        value={props.selectTwo}
+        value={props.select}
         onChange={(e) => handleSelectChange(e)}
       >
         <option value="Ordena por calificacion" selected disabled>
