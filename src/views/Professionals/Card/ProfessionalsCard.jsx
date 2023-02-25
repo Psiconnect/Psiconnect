@@ -14,7 +14,6 @@ export default function ProfessionalsCard({
   if(Array.isArray(areas)){
     areas = areas?.map(el => el.area).join(',')
   }
-  console.log(skills);
   if(Array.isArray(skills)){
     skills = skills?.map(el => el.skill).join(',')
   }
