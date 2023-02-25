@@ -15,7 +15,7 @@ export default function UsersForm() {
 
   const dispatch = useDispatch();
 
- // const [error, setError] = useState({});
+  const [error, setError] = useState({});
 
   const [input, setInput] = useState({
     name: users?.name,
@@ -29,6 +29,11 @@ export default function UsersForm() {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setError(validation[e.target.name]({
+      ...input,
+      [e.target.name]:e.target.value
+    }))
+    console.log(error)
   };
 
   const previewFile = (file) => {
@@ -74,8 +79,8 @@ export default function UsersForm() {
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     setLoading(true)
-      console.log(input);
-    if (selectedFile) {
+    if(!Object.keys(error).at(0)){
+     if (selectedFile) {
       
       const newImage = await uploadImage(selectedFile);
      await putUserData({
@@ -110,7 +115,16 @@ export default function UsersForm() {
         })}
       )
       .catch((err) => console.log(err));
-      }
+      } 
+    }else{
+      setLoading(false)
+      swal({
+        title: "Error!",
+        text: Object.values(error)[0],
+        icon: "error",
+      })
+    }
+    
         
   };
   return (
@@ -151,25 +165,23 @@ export default function UsersForm() {
 
           <section className={style.dataChange}>
             <input
-              className={style.dataDisabled}
+              className={error.name? style.dataInputError : style.dataInput}
               type="text"
               placeholder="Nombres"
               name="name"
               value={input.name}
-              disabled
               onChange={(e) => handleInputChanges(e)}
             />
-
+{error.name && <p className={style.pError}>{error.name}</p>}
             <input
-              className={style.dataDisabled}
+              className={error.lastName? style.dataInputError : style.dataInput}
               type="text"
               placeholder="Apellidos"
               name="lastName"
               value={input.lastName}
-              disabled
               onChange={handleInputChanges}
             />
-
+{error.lastName && <p className={style.pError}>{error.lastName}</p>}
             <input
               className={style.dataInput}
               type="text"
@@ -195,19 +207,26 @@ export default function UsersForm() {
   );
 }
 
-// const validation = (input) => {
-//   let error = {};
-//   const onlyLetter = new RegExp("^[A-Z]+$", "i");
-//   const rgOnlyNumbers = new RegExp(/^\d+$/);
+const onlyLetter = new RegExp (/^[a-zA-ZáéíóúñÁÉÍÓÚÑ\s]+$/) //le agregué tildes y ñ  
+  const rgOnlyNumbers = new RegExp(/^\d+$/);
 
-//   // if (!input.name) error.name = 'El nombre es requerido'
-//   // else if(!onlyLetter.test(input.name)) error.name = "Solo letras"
+  const validation =  {
+  error : {},
+  name: (input)=>{
+     if (!input.name) validation.error.name = 'El nombre es requerido'
+  else if(!onlyLetter.test(input.name)) validation.error.name = "Solo letras"
+  else delete validation.error.name
+  return validation.error
+  },
+  lastName: (input)=>{
+    if (!input.lastName) validation.error.lastName = 'El apellido es requerido'
+  else if(!onlyLetter.test(input.lastName)) validation.error.lastName = "Solo letras"
+ else delete validation.error.lastName
+ return validation.error
+ }
 
-//   // if (!input.lastName) error.lastName = 'El apellido es requerido'
-//   // else if(!onlyLetter.test(input.lastName)) error.lastName = "Solo letras"
+  // if (!input.phone) error.phone = "Nro telefónico es requerido";
+  // else if (!rgOnlyNumbers.test(input.phone)) error.phone = "Solo numeros";
 
-//   if (!input.phone) error.phone = "Nro telefónico es requerido";
-//   else if (!rgOnlyNumbers.test(input.phone)) error.phone = "Solo numeros";
 
-//   return error;
-// };
+};
