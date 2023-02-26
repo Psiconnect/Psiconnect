@@ -89,14 +89,25 @@
 .pError{
     color:#f11010;
     font-size:small;
-    margin: 0%;
+    margin-top: 0%;
 }
 .dataInput{
     background: white;
-    padding: 12px 15px;
-    margin: 8px 15px;
+    padding: 2.2% 2%;
+    margin: 2.5% 0%;
     border-radius: 20px;
     border: none;
+    outline: none;
+    box-shadow: 7px 7px 12px #c1c1c1, -7px -7px 13px #fff !important;
+    font: var(--lightParagrah);
+    font-size: 100%;
+}
+.dataInputError{
+    background: white;
+    padding: 2.2% 2%;
+    margin: 2.5% 0%;
+    border-radius: 20px;
+    border: #f11010 solid 0.1em;
     outline: none;
     box-shadow: 7px 7px 12px #c1c1c1, -7px -7px 13px #fff !important;
     font: var(--lightParagrah);
