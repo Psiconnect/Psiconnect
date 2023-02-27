@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { deletePendingConsult, getProfessionalById } from "../../../../features/apiPetitions";
+import {
+  deletePendingConsult,
+  getProfessionalById,
+} from "../../../../features/apiPetitions";
 import style from "./Card.module.css";
 import Swal from "sweetalert";
 
@@ -24,9 +27,8 @@ export default function Card({ consult, status, link }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        deletePendingConsult(consult.id)
+        deletePendingConsult(consult.id);
         console.log("Consulta cancelada");
-        
       } else {
         console.log("Cancelación cancelada");
       }
@@ -76,7 +78,7 @@ export default function Card({ consult, status, link }) {
       {status === "COMPLETED" ? (
         <section className={style.statusContainer}>
           <p>
-            Estado de consulta: <b>ACEPTADA</b>
+            Estado de consulta: <b>{status}</b>
           </p>
 
           <button className={style.navigateButton} onClick={handleNavigate}>
@@ -86,14 +88,18 @@ export default function Card({ consult, status, link }) {
       ) : (
         <section className={style.statusContainer}>
           <p>
-            Estado de consulta: <b>PENDIENTE</b>
+            Estado de consulta: <b>{status}</b>
           </p>
-          <button className={style.navigateButton} onClick={handleNavigate}>
-            Link de Pago
-          </button>
-          <button className={style.cancelButton} onClick={handleCancel}>
-            Cancelar Consulta
-          </button>
+          {status !== "CANCELADO" && (
+            <button className={style.navigateButton} onClick={handleNavigate}>
+              Link de Pago
+            </button>
+          )}
+          {status !== "CANCELADO" && (
+            <button className={style.cancelButton} onClick={handleCancel}>
+              Cancelar Consulta
+            </button>
+          )}
         </section>
       )}
     </div>
