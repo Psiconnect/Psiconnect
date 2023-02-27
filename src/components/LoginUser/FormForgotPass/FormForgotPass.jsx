@@ -2,10 +2,10 @@ import InputEmail from "../InputEmail/InputEmail";
 import { useState } from "react";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { loading, titleMin, divContainer, submit, arrowDiv, form, arrow, divInputs, titleMinDiv, loadingDiv } from './FormForgotPass.module.css';
-import { sendEmailForgetPassProfessional, sendEmailForgetPassUser } from '../../../features/apiPetitions.js'
+import { sendEmailForgetPassUser, sendEmailForgetPassProfessional } from '../../../features/apiPetitions.js'
 import { successMessage } from "../../../features/errorsModals";
 
-const FormForgotPass = ({SetSwitchForgotPass}) => {
+const FormForgotPass = ({SetSwitchForgotPass, setloginProf}) => {
 const [ email, setEmail ] = useState('')
 const [ switchLoading, setSwitchLoading ] = useState(false)
 
@@ -22,6 +22,10 @@ const handleOnSubmit = async(e) => {
 const handleInputChange = (e) => {
     setEmail(e.target.value)
 }
+const backModalLogin = () => {
+    setloginProf(false)
+    SetSwitchForgotPass(false);
+}
 
     return (
         <div className={divContainer}>
@@ -35,7 +39,7 @@ const handleInputChange = (e) => {
                 <div className={arrowDiv}>
                     <ArrowBackIcon 
                     className={arrow}
-                    onClick={()=> SetSwitchForgotPass(false)}/>
+                    onClick={backModalLogin}/>
                 </div>
                 <div className={titleMinDiv}>
                     <h3 className={titleMin}> Ingrese su correo</h3>

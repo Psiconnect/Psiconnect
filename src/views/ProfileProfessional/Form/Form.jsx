@@ -147,9 +147,9 @@ const inputErrorChecker = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors(validationsForm.avatar(form));
-    const newImage = await uploadImage(form.avatar);
-    if (!Object.keys(errors).at(0)) {
+    setErrors(validationsForm.avatar(form))
+    const newImage= await uploadImage(form.avatar)
+    if (!inputErrorChecker()) {
       profUpdate({
         state: dispatch,
         type: "global",

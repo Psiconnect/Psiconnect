@@ -14,6 +14,11 @@ export default function Card({ consult, status, link }) {
       : (window.location.href = link);
   };
 
+  const handleCancel = () => {
+    // Aquí se puede agregar la lógica para cancelar la consulta
+    console.log("Consulta cancelada");
+  };
+
   useEffect(() => {
     getProfessionalById(consult.professionalId, setUser);
   }, []);
@@ -73,6 +78,9 @@ export default function Card({ consult, status, link }) {
           </p>
           <button className={style.navigateButton} onClick={handleNavigate}>
             Link de Pago
+          </button>
+          <button className={style.cancelButton} onClick={handleCancel}>
+            Cancelar
           </button>
         </section>
       )}
