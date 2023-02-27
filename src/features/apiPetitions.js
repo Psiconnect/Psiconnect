@@ -46,6 +46,17 @@ export async function userLoginByGoogle(body) {
     throw new Error(error.response.data);
   }
 }
+export async function deletePendingConsult(param) {
+  try {
+    const peticion = await axios.delete(`consult/deleted/${param}`);
+    localStorage.setItem("tkn", peticion?.data);
+    successMessage('LO HICIMOS!')
+    return peticion;
+  } catch (error) {
+    errorMenssage(error.response.data);
+    throw new Error(error.response.data);
+  }
+}
 
 export async function profLogin(body) {
   try {

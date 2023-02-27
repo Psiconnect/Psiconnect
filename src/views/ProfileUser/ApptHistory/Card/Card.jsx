@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProfessionalById } from "../../../../features/apiPetitions";
+import { deletePendingConsult, getProfessionalById } from "../../../../features/apiPetitions";
 import style from "./Card.module.css";
+import Swal from "sweetalert";
 
 export default function Card({ consult, status, link }) {
   const [user, setUser] = useState();
@@ -15,8 +16,21 @@ export default function Card({ consult, status, link }) {
   };
 
   const handleCancel = () => {
-    // Aquí se puede agregar la lógica para cancelar la consulta
-    console.log("Consulta cancelada");
+    Swal({
+      title: "¿Estás seguro de que quieres cancelar esta consulta?",
+      text: "La cancelación es irreversible.",
+      icon: "warning",
+      buttons: ["No", "Sí"],
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        deletePendingConsult(consult.id)
+        console.log("Consulta cancelada");
+        
+      } else {
+        console.log("Cancelación cancelada");
+      }
+    });
   };
 
   useEffect(() => {
@@ -30,12 +44,10 @@ export default function Card({ consult, status, link }) {
           <p>
             <b>Sobre tu Consulta</b>
           </p>
-
           <p>
             <b>Fecha: </b>
             {consult.date}
           </p>
-
           <p>
             <b>Precio: </b>
             {consult.price} usd
@@ -80,7 +92,7 @@ export default function Card({ consult, status, link }) {
             Link de Pago
           </button>
           <button className={style.cancelButton} onClick={handleCancel}>
-            Cancelar
+            Cancelar Consulta
           </button>
         </section>
       )}
