@@ -4,7 +4,7 @@ import { getProfessionalsFilters } from "../../features/apiPetitions";
 import style from "./index.module.css";
 import lupa from "../../assets/hero/lupa.svg";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
-export default function SearchBar({ area , setSelect}) {
+export default function SearchBar({ area , setSelect, setCurrentPage}) {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
@@ -14,7 +14,10 @@ export default function SearchBar({ area , setSelect}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSelect('Ordena por precio')
+    setSelect({
+      selectOne:'Ordena por precio',
+      selectTwo:'Ordena por calificacion'
+    })
     getProfessionalsFilters({
       type: "global",
       state: dispatch,
@@ -24,6 +27,7 @@ export default function SearchBar({ area , setSelect}) {
     }).then(e =>{
       setInput('');
     });
+    setCurrentPage(1)
   };
   return (
     <form className={style.inputCointer} onSubmit={(e) => handleSubmit(e)}>

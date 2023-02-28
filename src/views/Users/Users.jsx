@@ -8,12 +8,14 @@ import SearchBar from "../Professionals/SearchBar.jsx";
 import { getProfessionalsFilters } from "../../features/apiPetitions.js";
 import PriceOrdering from "../Professionals/PriceOrdering.jsx";
 import CalificationOrdering from "../Professionals/CalificationOrdering.jsx";
+import { useLocation } from "react-router-dom";
 
 export default function Users() {
   const professionals = useSelector(
     (state) => state.professionals.FilterProfessional
   );
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     getProfessionalsFilters({
@@ -24,8 +26,10 @@ export default function Users() {
       lastName: null,
     });
   }, []);
-  const [selectTwo, setSelectTwo] = useState("Ordena por calificacion");
-  const [select, setSelect]= useState('Ordena por precio')
+  const [select, setSelect]= useState({
+    selectOne:'Ordena por precio',
+    selectTwo:'Ordena por calificacion'
+  })
   const [currentPage, setCurrentPage] = useState(1);
   const [ProfessionalsPerPage, setProfessionalsPerPage] = useState(8);
   useEffect(() => {
@@ -40,11 +44,11 @@ export default function Users() {
     <div className={style.container}>
       <div className={style.searchBarAndOrder}>
       <div className={style.containerSearchBar}>
-        <SearchBar setSelect={setSelect}/>
+        <SearchBar setSelect={setSelect} setCurrentPage={setCurrentPage}/>
       </div>
       <div className={style.filtersDiv}>
         <PriceOrdering select={select} setSelect={setSelect} />
-        <CalificationOrdering select={selectTwo} setSelect={setSelectTwo} />
+        <CalificationOrdering select={select} setSelect={setSelect} />
       </div>
       </div>
       <div className={style.cardContainer}>
