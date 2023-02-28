@@ -117,6 +117,6 @@ El proyecto fue desarrollado por un equipo de desarrolladores de SoyHenry, quien
 
 
 
-Si estás interesado en saber más sobre este proyecto o en colaborar en su desarrollo, no dudes en visitar el siguiente enlace: https://psiconnect-api-dev.up.railway.app/.
+Si estás interesado en saber más sobre este proyecto y quieres probarlo, no dudes en visitar el siguiente enlace: https://psiconnect.vercel.app/p .
 
 ¡Esperamos que disfrutes de la experiencia! 🎉
