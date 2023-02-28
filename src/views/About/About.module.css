@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    justify-content: center;
     padding: 50px;
     font: var(--hTitle);
     font-size: 150%
@@ -10,12 +11,11 @@
 
 .content {
     padding: 2rem;
-    font-size: 1.5rem;
+    text-align: justify;
     background-color: rgb(54, 186, 164);
     display: inline-block;
     margin: 1rem;
     border-radius: 20px;
-    max-width: 850px;
     font-size: 1.2rem;
 }
 
@@ -50,7 +50,7 @@
 
 .title {
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: black;
 }
 
@@ -61,11 +61,11 @@
 }
 .containerAllIcons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     align-items: center;
     justify-content: center;
     background-color: #1cbee7e3;
-    padding: 1rem;
+    padding: 2rem;
     flex-wrap: wrap;
     border-radius: 20px;
     border: 2px solid white;
@@ -102,14 +102,33 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
     
-    .img {
-        width: 150px;
-    }
-
+.container{
+    padding: 3%;
+}
+h1{
+    font-size:x-large;
+}
     .content {
         padding: 1rem;
         margin: 0.5rem;
+        font-size: 1rem;
+    }
+    .title {
+        text-align: center;
+        font-size: 1.6rem;
+        color: black;
+    }
+    .containerAllIcons {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        background-color: #1cbee7e3;
+        padding: 1rem;
+        flex-wrap: wrap;
+        border-radius: 20px;
+        border: 2px solid white;
     }
 }

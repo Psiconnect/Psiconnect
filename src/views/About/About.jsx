@@ -5,10 +5,11 @@ import style from "./About.module.css";
 
 export default function About(props) {
   return (
-    <div>
+    <div className={style.container}>
       <h1>Acerca de Psiconnect</h1>
+      <div className={style.content}>
       <p>
-Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofrece <a href='https://www.soyhenry.com'>SoyHenry</a>, realizado por ocho alumnos del cohorte 32b. El mismo fue propuesto por uno de los participanttes (Fer) que, además de ser próximo desarrollador, también ejerce como psicólogo, lo cual nos ayudó a llevar adelande esta app de la manera más profesional posible. </p>
+Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofrece <a href='https://www.soyhenry.com'>SoyHenry</a>, realizado por ocho alumnos del cohorte 32b. El mismo fue propuesto por uno de los participanttes que, además de ser desarrollador, también ejerce como psicólogo, lo cual nos ayudó a llevar adelande esta app de la manera más profesional posible. </p>
 <p>
         El objetivo de la misma es proporcionar atención en un área de la
         salud tan importante como lo es la <b>salud mental</b>. A partir de
@@ -21,17 +22,17 @@ Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofre
         proveemos son:
       </p>
       <p>
-        ·Acceso a un panel administrativo donde podrá actualizar sus datos,
+        ◼Acceso a un panel administrativo donde podrá actualizar sus datos,
         establecer sus horarios de trabajo y visualizar todo el historial de
         citas y transacciones para llevar a cabo un mejor manejo de sus
         pacientes.
       </p>
       <p>
-        ·Posibilidad de charlar con un paciente antes de concretar una cita para
+        ◼Posibilidad de charlar con un paciente antes de concretar una cita para
         generar confianza.
       </p>
       <p>
-        ·Seguridad en el pago de las consultas ya que éste se efectúa al momento
+        ◼Seguridad en el pago de las consultas ya que éste se efectúa al momento
         de reservar.
       </p>
       <p>
@@ -45,7 +46,7 @@ Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofre
         profesional luego de la cita. Esto ayuda, tanto al profesional para su
         posicionamiento, como a los nuevos usuarios para agilizar su búsqueda.
       </p>
-
+</div>
       <div className={style.containerTechs}>
         <h3 className={style.title}>Tecnologías utilizadas</h3>
         <div className={style.containerAllIcons}>
