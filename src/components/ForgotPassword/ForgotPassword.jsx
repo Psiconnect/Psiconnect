@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { errorMenssage, successMessage } from '../../features/errorsModals.js';
-import { verifyTokenForgotPassword, forgotPasswordUser, forgotPasswordProfessional } from '../../features/apiPetitions.js';
+import { verifyTokenForgotPassword, forgotPasswordProfessional } from '../../features/apiPetitions.js';
 import { form, DivContainerForm, title, imgDiv, buttonSubmit, img, imgDivContainer} from './ForgotPassword.module.css'
 import validationsForm from '../RegisterPsico/validator.js';
 import InputsPasswords from './InputsPasswords/InputsPasswords.jsx'
@@ -54,15 +54,14 @@ const hanldeOnSubimt = async(e) => {
     e.preventDefault()
     if(checkErrors()) errorMenssage(Object.values(errors).join(', ')|| 'Error') 
     else {
-        const request = await forgotPasswordUser(token,{newPassword: passwords.password})
-        const requestTwo = await forgotPasswordProfessional(token,{newPassword: passwords.password})
+        const request = await forgotPasswordProfessional(token,{newPassword: passwords.password})
         if(request.data){
             successMessage(request.data)
-                .then(data =>  window.location.pathname = '/')
-        }else if(requestTwo.data){
-            successMessage(requestTwo.data)
-                .then(data =>  window.location.pathname = '/')
-        }else errorMenssage('Upss, Alparecer hubo problemas, intentalo de nuevo mas tarde')
+                .then(data =>  {window.location.pathname = '/'; window.location.reload();})
+        }else {
+            console.log(request)
+            errorMenssage('Upss, Alparecer hubo problemas, intentalo de nuevo mas tarde')
+        }
     }
 }
 if(verifyToken === null) return (<h1>Cargando</h1>)

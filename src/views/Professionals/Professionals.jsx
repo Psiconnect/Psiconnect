@@ -8,7 +8,7 @@ import Pagination from "./pagination.jsx";
 import PriceOrdering from "./PriceOrdering.jsx";
 import SearchBar from "./SearchBar.jsx";
 import AreaSliderFilter from "../../components/AreaSliderFilter/AreaSliderFilter";
-import { orderProfessionalsByPrice } from "../../features/professionalSlice";
+import CalificationOrdering from "./CalificationOrdering";
 
 export default function Professionals() {
   const { area } = useParams();
@@ -26,7 +26,10 @@ export default function Professionals() {
       area: area ? area : null,
       type: "global",
     });
-    setSelect("Ordena por precio");
+    setSelect({
+      selectOne:'Ordena por precio',
+      selectTwo:'Ordena por calificacion'
+    });
     setCurrentPage(1);
   }, [area]);
 
@@ -34,7 +37,10 @@ export default function Professionals() {
     getAreas(setAreas);
   }, []);
 
-  const [select, setSelect] = useState("Ordena por precio");
+  const [select, setSelect]= useState({
+    selectOne:'Ordena por precio',
+    selectTwo:'Ordena por calificacion'
+  })
   const [areas, setAreas] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const [ProfessionalsPerPage, setProfessionalsPerPage] = useState(8);
@@ -61,28 +67,30 @@ export default function Professionals() {
       </div>
       <div className={style.searchBarAndOrder}>
         <div className={style.containerSearchBar}>
-          <SearchBar area={area} setSelect={setSelect} />
+          <SearchBar area={area} setSelect={setSelect}  setCurrentPage={setCurrentPage}/>
         </div>
-
-        <PriceOrdering select={select} setSelect={setSelect} />
+        <div className={style.filtersDiv}>
+          <PriceOrdering select={select} setSelect={setSelect} />
+          <CalificationOrdering select={select} setSelect={setSelect} />
+        </div>
       </div>
       <div className={style.cardContainer}>
         {professionals &&
           professionals
             .slice(indexOfFirstProfessional, indexOfLastProfessional)
             .map((e, i) => (
-              <ProfessionalsCard
+            <ProfessionalsCard
                 key={i}
                 id={e.id}
                 name={e.name}
                 lastName={e.lastName}
-                areas={e.areas}
-                avatar={e?.avatar}
-                skills={e.skills}
+                areas={e?.areas || 'Depresion'}
+                avatar={e.avatar}
+                skills={e?.skills}
                 price={e?.price}
                 score={e?.score}
               />
-            ))}
+              ))}
       </div>
       <Pagination
         ProfessionalsPerPage={ProfessionalsPerPage}

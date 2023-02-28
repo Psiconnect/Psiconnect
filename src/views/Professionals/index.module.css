@@ -6,7 +6,6 @@
   
   flex-direction: column;
 }
-
 .container input{
   box-shadow: none;
   width: 50%;
@@ -212,7 +211,7 @@ background-color: rgb(233, 249, 250) ;
   cursor: pointer;
   font-size: large;
   box-shadow: none;
-  width: 45%;
+  width: 50%;
   padding: 10px 0px;
   border: 2px solid cadetblue;
   transition: all 1700ms ease-in-out;
@@ -220,8 +219,18 @@ background-color: rgb(233, 249, 250) ;
 .selectContainer{
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 70%;
+  justify-content: end;
+  width: 50%;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+.selectContainerTwo{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 50%;
+  margin-left: 2rem;
+  margin-top: 1rem;
 }
 .searchBarAndOrder{
   display: flex;
@@ -229,8 +238,32 @@ background-color: rgb(233, 249, 250) ;
   justify-content: center;
   align-items: center;
 }
+.searchBarAndOrder .filtersDiv{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+}
+
+@media (max-width: 1200px) {
+.select{
+  width: 65%;
+}
+}
+@media (max-width: 900px) {
+  .select{
+    width: 80%;
+  }
+}
 @media (max-width: 600px) {
-  
+.selectContainer, .selectContainerTwo{
+  justify-content: center;
+  margin: 0.5rem 0rem;
+}
+.select{
+  width: 85%;
+}
 .paginated li {
   list-style: none;
   display: flex;

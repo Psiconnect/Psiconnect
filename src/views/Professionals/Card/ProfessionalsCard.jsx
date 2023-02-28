@@ -11,11 +11,13 @@ export default function ProfessionalsCard({
   score,
   areas,
 }) {
-  const navigate = useNavigate();
   if(Array.isArray(areas)){
-    skills = skills?.map(s => s.skill).join(' ')
-    areas = areas?.map(a => a.area).join(' ')
+    areas = areas?.map(el => el.area).join(',')
   }
+  if(Array.isArray(skills)){
+    skills = skills?.map(el => el.skill).join(',')
+  }
+  const navigate = useNavigate();
   return (
     <div className={style.card} onClick={()=>navigate(`/Details/${id}`)}>
       <div className={style.blob}></div>
@@ -28,10 +30,10 @@ export default function ProfessionalsCard({
         <span>{lastName}</span>
       </h2>
       <div className={style.info}>
-        <p><span>Skills:</span> <br /> {skills?.split(' ')[0] || 'AMABLE'}</p>
-        <p><span>Areas:</span> <br /> {areas?.split(' ')[0]}</p>
-        <p><span>Precio:</span> <br /> ${price || 200}</p>
-        <p><span>Calificación: <br /></span> {score || 3.4} / 5</p>
+        <p><span>Skills:</span> <br /> {skills?.split(',')[0]? skills?.split(',')[0] : skills || 'Amable' }</p>
+        <p><span>Areas:</span> <br /> {areas?.split(',')[0]|| 'Depresion'}</p>
+        <p><span>Precio:</span> <br /> ${price || 15}</p>
+        <p><span>Calificación: <br /></span> {score? `${score} /5` : 'Sé el primero en calificar'}</p>
       </div>
     </div>
   );

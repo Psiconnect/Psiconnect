@@ -22,6 +22,7 @@ import Admin from "./views/Admin/Admin";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 import LoadingDani from "./components/Loading/LoadingDani";
 import Test from "./views/test";
+import About from "./views/About/About";
 
 function App() {
   const user = useSelector((state) => state.user.user);
@@ -56,6 +57,7 @@ function App() {
           element={<PostRegisterPsico />}
         />
         <Route path="/" element={<Home />} />
+        <Route path="/About" element={<About/>} />
         <Route path="/Asistencia" element={<Asistencia />} />
         <Route path="/registerProfesional" element={<RegisterProfesional />} />
         <Route path="/details/:id" element={<Details />} />

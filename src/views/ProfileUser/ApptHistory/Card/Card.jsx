@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getProfessionalById } from "../../../../features/apiPetitions";
+import {
+  deletePendingConsult,
+  getProfessionalById,
+} from "../../../../features/apiPetitions";
 import style from "./Card.module.css";
+import Swal from "sweetalert";
 
 export default function Card({ consult, status, link }) {
   const [user, setUser] = useState();
@@ -12,6 +16,23 @@ export default function Card({ consult, status, link }) {
     status === "COMPLETED"
       ? navigate(`/Formreview/${consult.professionalId}`)
       : (window.location.href = link);
+  };
+
+  const handleCancel = () => {
+    Swal({
+      title: "¿Estás seguro de que quieres cancelar esta consulta?",
+      text: "La cancelación es irreversible.",
+      icon: "warning",
+      buttons: ["No", "Sí"],
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        deletePendingConsult(consult.id);
+        console.log("Consulta cancelada");
+      } else {
+        console.log("Cancelación cancelada");
+      }
+    });
   };
 
   useEffect(() => {
@@ -25,12 +46,10 @@ export default function Card({ consult, status, link }) {
           <p>
             <b>Sobre tu Consulta</b>
           </p>
-
           <p>
             <b>Fecha: </b>
             {consult.date}
           </p>
-
           <p>
             <b>Precio: </b>
             {consult.price} usd
@@ -59,7 +78,7 @@ export default function Card({ consult, status, link }) {
       {status === "COMPLETED" ? (
         <section className={style.statusContainer}>
           <p>
-            Estado de consulta: <b>ACEPTADA</b>
+            Estado de consulta: <b>{status}</b>
           </p>
 
           <button className={style.navigateButton} onClick={handleNavigate}>
@@ -69,11 +88,18 @@ export default function Card({ consult, status, link }) {
       ) : (
         <section className={style.statusContainer}>
           <p>
-            Estado de consulta: <b>PENDIENTE</b>
+            Estado de consulta: <b>{status}</b>
           </p>
-          <button className={style.navigateButton} onClick={handleNavigate}>
-            Link de Pago
-          </button>
+          {status !== "CANCELADO" && (
+            <button className={style.navigateButton} onClick={handleNavigate}>
+              Link de Pago
+            </button>
+          )}
+          {status !== "CANCELADO" && (
+            <button className={style.cancelButton} onClick={handleCancel}>
+              Cancelar Consulta
+            </button>
+          )}
         </section>
       )}
     </div>

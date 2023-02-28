@@ -71,7 +71,7 @@ export default function LoginUser({
       thema: "inline",
       size: "large",
     });
-  }, [loginProf]);
+  }, [loginProf,switchForgotPass]);
 
   const changeHandler = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -85,6 +85,7 @@ export default function LoginUser({
   return (
     switchForgotPass?
     <FormForgotPass 
+    setloginProf={setloginProf}
     SetSwitchForgotPass={SetSwitchForgotPass}
     />
     :

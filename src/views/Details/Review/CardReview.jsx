@@ -18,6 +18,7 @@ export default function CardReview (props) {
               <ReactStars 
                 classNames={style.compstart}
                 count = {5} 
+                edit= {false}
                 activeColor= '#efb810' 
                 size = {25} 
                 value = {props.puntualidad} 
@@ -32,6 +33,7 @@ export default function CardReview (props) {
               <ReactStars 
                 classNames={style.compstart}
                 count = {5} 
+                edit= {false}
                 activeColor= '#efb810' 
                 size = {25} 
                 value = {props.puntualidad} 
@@ -46,6 +48,7 @@ export default function CardReview (props) {
               <ReactStars 
                 classNames={style.compstart}
                 count = {5} 
+                edit= {false}
                 activeColor= '#efb810' 
                 size = {25} 
                 value = {props.general} 

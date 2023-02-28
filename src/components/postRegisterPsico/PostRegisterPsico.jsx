@@ -79,7 +79,6 @@ const handleOnSubmit = async (e) => {
             avatar: newImage,
             price: String(register.price.split('.')[0])
         },token)
-        console.log(register.price)
         if(request.status === 202) {
             setLoading(false)
             successMessage(request.data.message).then(()=>{
