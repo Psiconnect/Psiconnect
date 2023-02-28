@@ -48,7 +48,7 @@ export default function NavBar() {
         <div className={`${style.nav} ${open ? null : style.navClose}`}>
           <div className={style.nav_list}>
             <div>
-              <Link to={"/"}>
+              <Link to={"/About"}>
                 <h3 onClick={closeNav} className={style.navItem}>
                   ¿Qué es Psiconnect?{" "}
                 </h3>
