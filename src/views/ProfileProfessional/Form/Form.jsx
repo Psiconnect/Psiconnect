@@ -147,15 +147,9 @@ const inputErrorChecker = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    setErrors(validationsForm.avatar(form));
-    const newImage = await uploadImage(form.avatar);
-    if (!Object.keys(errors).at(0)) {
-=======
     setErrors(validationsForm.avatar(form))
     const newImage= await uploadImage(form.avatar)
     if (!inputErrorChecker()) {
->>>>>>> 27304245852b3c040a315d44c28e1f72d06ebdf6
       profUpdate({
         state: dispatch,
         type: "global",
@@ -184,14 +178,8 @@ const inputErrorChecker = () => {
       <form className={style.form} onSubmit={(e) => handleSubmit(e)}>
         <label className={style.labelInicio}>
           {user.name} {user.lastName}
-<<<<<<< HEAD
-        </label>{" "}
-        <br />
-        <label className={style.label}>Avatar</label>
-=======
         </label> <br />
         <label className={style.labelAvatar}>Avatar</label>
->>>>>>> 27304245852b3c040a315d44c28e1f72d06ebdf6
         <p className={style.p}>*selecciona un imagen para tu foto de perfil</p>
         <div className={style.divContainerImg}>
           <div className={style.divAvatar}>
@@ -350,15 +338,11 @@ const inputErrorChecker = () => {
             placeholder='$15'
             onChange={handleInputChange}
             />
-<<<<<<< HEAD
-        <input className={style.inputSubmit} type="submit" value="Actualizar" />
-=======
         <input 
         disabled={inputErrorChecker()}
         className={inputErrorChecker()? style.inputSubmitDisabled : style.inputSubmit }
         type="submit" 
         value="Actualizar" />
->>>>>>> 27304245852b3c040a315d44c28e1f72d06ebdf6
       </form>
     </div>
   );
