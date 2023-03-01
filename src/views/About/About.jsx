@@ -1,52 +1,61 @@
 import React from "react";
 import style from "./About.module.css";
+import DevCard from "./DevCards/DevCard";
+import developers from "./DevCards/data.js";
 // import faVite from '../../assets/faVite.png'
 // import faFireBase from '../../assets/'
 
-export default function About(props) {
+export default function About() {
   return (
     <div className={style.container}>
       <h1>Acerca de Psiconnect</h1>
       <div className={style.content}>
-      <p>
-Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofrece <a href='https://www.soyhenry.com'>SoyHenry</a>, realizado por ocho alumnos del cohorte 32b. El mismo fue propuesto por uno de los participanttes que, además de ser desarrollador, también ejerce como psicólogo, lo cual nos ayudó a llevar adelande esta app de la manera más profesional posible. </p>
-<p>
-        El objetivo de la misma es proporcionar atención en un área de la
-        salud tan importante como lo es la <b>salud mental</b>. A partir de
-        esto, nos centramos cien por ciento en la experiencia del usuario para
-        que no sólo le sea fácil navegar por la aplicación sino que también
-        reciba una atención que no encontrará en ninguna otra. Además de eso,
-        también proporcionamos la mejor experiencia para aquel profesional que
-        quisiera unirse al staff, brindándole amplias herramientas para
-        desenvolverse en su ámbito laboral. Algunas de las facilidades que le
-        proveemos son:
-      </p>
-      <p>
-        ◼Acceso a un panel administrativo donde podrá actualizar sus datos,
-        establecer sus horarios de trabajo y visualizar todo el historial de
-        citas y transacciones para llevar a cabo un mejor manejo de sus
-        pacientes.
-      </p>
-      <p>
-        ◼Posibilidad de charlar con un paciente antes de concretar una cita para
-        generar confianza.
-      </p>
-      <p>
-        ◼Seguridad en el pago de las consultas ya que éste se efectúa al momento
-        de reservar.
-      </p>
-      <p>
-        En lo que respecta del usuario como paciente, le proporcionamos una
-        vista de profesionales filtrados por áreas, las cuales están pensadas
-        como problemáticas cotidianas a tratar en terapia. Esto puede facilitar
-        la elección del usuario dependiendo de las sensaciones y sentimientos
-        presentes en el momento, como puede ser ansiedad, problemas de
-        autoestima, depresión, etc. También contamos con un sistema de
-        calificación que habilita al usuario a dejar un comentario y puntuar al
-        profesional luego de la cita. Esto ayuda, tanto al profesional para su
-        posicionamiento, como a los nuevos usuarios para agilizar su búsqueda.
-      </p>
-</div>
+        <p>
+          Psiconnect es un proyecto final de la carrera Desarrollo Web
+          Full-Stack que ofrece <a href="https://www.soyhenry.com">SoyHenry</a>,
+          realizado por ocho alumnos del cohorte 32b. El mismo fue propuesto por
+          uno de los participanttes que, además de ser desarrollador, también
+          ejerce como psicólogo, lo cual nos ayudó a llevar adelande esta app de
+          la manera más profesional posible.{" "}
+        </p>
+        <p>
+          El objetivo de la misma es proporcionar atención en un área de la
+          salud tan importante como lo es la <b>salud mental</b>. A partir de
+          esto, nos centramos cien por ciento en la experiencia del usuario para
+          que no sólo le sea fácil navegar por la aplicación sino que también
+          reciba una atención que no encontrará en ninguna otra. Además de eso,
+          también proporcionamos la mejor experiencia para aquel profesional que
+          quisiera unirse al staff, brindándole amplias herramientas para
+          desenvolverse en su ámbito laboral. Algunas de las facilidades que le
+          proveemos son:
+        </p>
+        <p>
+          ◼Acceso a un panel administrativo donde podrá actualizar sus datos,
+          establecer sus horarios de trabajo y visualizar todo el historial de
+          citas y transacciones para llevar a cabo un mejor manejo de sus
+          pacientes.
+        </p>
+        <p>
+          ◼Posibilidad de charlar con un paciente antes de concretar una cita
+          para generar confianza.
+        </p>
+        <p>
+          ◼Seguridad en el pago de las consultas ya que éste se efectúa al
+          momento de reservar.
+        </p>
+        <p>
+          En lo que respecta del usuario como paciente, le proporcionamos una
+          vista de profesionales filtrados por áreas, las cuales están pensadas
+          como problemáticas cotidianas a tratar en terapia. Esto puede
+          facilitar la elección del usuario dependiendo de las sensaciones y
+          sentimientos presentes en el momento, como puede ser ansiedad,
+          problemas de autoestima, depresión, etc. También contamos con un
+          sistema de calificación que habilita al usuario a dejar un comentario
+          y puntuar al profesional luego de la cita. Esto ayuda, tanto al
+          profesional para su posicionamiento, como a los nuevos usuarios para
+          agilizar su búsqueda.
+        </p>
+      </div>
       <div className={style.containerTechs}>
         <h3 className={style.title}>Tecnologías utilizadas</h3>
         <div className={style.containerAllIcons}>
@@ -375,8 +384,8 @@ Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofre
           </div>
           <div className={style.iconContainer}>
             <svg
-            height='100px'
-            width='100px'
+              height="100px"
+              width="100px"
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               viewBox="23 6 469 132"
@@ -429,6 +438,24 @@ Psiconnect es un proyecto final de la carrera Desarrollo Web Full-Stack que ofre
             </svg>
             <p>FireBase</p>
           </div>
+        </div>
+      </div>
+      <div>
+        <h3 className={style.title}>Sobre nosotros</h3>
+        <div className={style.developers}>
+        {developers?.map((d) => {
+          return (
+            <DevCard
+              avatar={d.avatar}
+              name={d.name}
+              location={d.location}
+              description={d.description}
+              linkedin={d.linkedin}
+              github={d.github}
+              sitioWeb={d.sitioWeb}
+            />
+          );
+        })}
         </div>
       </div>
     </div>
