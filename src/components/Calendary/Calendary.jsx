@@ -16,9 +16,10 @@ const Calendary = ({
   setOpenLogin
 }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
-
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
   const user = useSelector((state) => state.user.user);
   const goToPayment = (body) => {
+    if (!!isButtonClicked) return 
     if (!user || user.rol !=='user') {
       swal("tienes que iniciar sesion como usuario antes").then((e) => {
         setOpenLogin(true);
@@ -31,9 +32,10 @@ const Calendary = ({
     });
     requestConsultation({ ...body, userId: user.id, professionalId }).then(
       (e) => (window.location.href = e)
-    );
-  };
-
+      );
+      setIsButtonClicked(true);
+    };
+    
   const validateHours = (day, hour) => {
     return (
       freeDays.includes(day.toString().split(" ")[0]) ||
