@@ -6,6 +6,7 @@ import {
 } from "../../../../features/apiPetitions";
 import style from "./Card.module.css";
 import Swal from "sweetalert";
+import { cancelConsultation } from "../../../../features/firebase/calendaryFeatures";
 
 export default function Card({ consult, status, link }) {
   const [user, setUser] = useState();
@@ -27,6 +28,7 @@ export default function Card({ consult, status, link }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
+        cancelConsultation(consult.professionalId,consult.date)
         deletePendingConsult(consult.id);
         console.log("Consulta cancelada");
       } else {

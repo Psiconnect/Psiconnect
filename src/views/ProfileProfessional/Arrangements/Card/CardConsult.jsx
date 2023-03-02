@@ -18,6 +18,7 @@ export default function CardConsult({consult}) {
             <div className={style.info}>
                 <p><b>Fecha: </b>{consult.date}</p>
                 <p><b>Precio: </b>{consult.price} usd</p>
+                <p><b>Estado: </b>{consult.status}</p>
             </div>
         </div>
         <div className={style.client}>
