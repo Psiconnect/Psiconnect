@@ -1,4 +1,4 @@
-import firebaseApp , { firebaseDatabase } from "./firebase";
+import firebaseApp from "./firebase";
 
 import {
   getFirestore,
@@ -6,6 +6,7 @@ import {
   doc,
   setDoc,
   getDocs,
+  deleteDoc,
 } from "firebase/firestore";
 
 const firestore = getFirestore(firebaseApp);
@@ -38,7 +39,7 @@ export async function createConsults({ professionalId, hours }) {
   });
 }
 export async function cancelConsultation({ professionalId, hours }) {
-   await firebaseDatabase.ref( `context/${professionalId}/consults/${hours}`).remove();
+  await deleteDoc(doc(firestore, `context/${professionalId}/consults/${hours}`));
    return
 }
 export async function getContextProfessional({ professionalId, state }) {
