@@ -38,7 +38,7 @@ export async function createConsults({ professionalId, hours }) {
     hours,
   });
 }
-export async function cancelConsultation({ professionalId, hours }) {
+export async function cancelConsultation(professionalId, hours) {
   await deleteDoc(doc(firestore, `context/${professionalId}/consults/${hours}`));
    return
 }
