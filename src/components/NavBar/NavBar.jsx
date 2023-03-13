@@ -58,7 +58,7 @@ export default function NavBar() {
               <Link to={"/registerProfesional"}>
                 {" "}
                 <h3 onClick={closeNav} className={style.navItem}>
-                  ¿Eres medico?{" "}
+                  Trabaja con nosotros{" "}
                 </h3>
               </Link>
             </div>
