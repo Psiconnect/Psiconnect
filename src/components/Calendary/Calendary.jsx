@@ -59,7 +59,7 @@ const Calendary = ({
 
   const renderWeek = () => {
     const days = [];
-    const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const weekDays = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
 
     for (let i = 0; i < 7; i++) {
       const day = new Date(currentDate);
@@ -132,6 +132,7 @@ const Calendary = ({
       {selectedHour && (
         <div className={style.modal}>
           <div>
+            <h4 >Horario elegido:</h4>
             {selectedHour.day.toLocaleString("default", { weekday: "long" })},{" "}
             {selectedHour.day.toLocaleString("default", { month: "long" })}{" "}
             {selectedHour.hour}
@@ -140,7 +141,7 @@ const Calendary = ({
             className={style.button}
             onClick={() => setSelectedHour(null)}
           >
-            Close
+            Cerrar
           </button>
           <button
             className={style.button}
@@ -155,7 +156,7 @@ const Calendary = ({
               })
             }
           >
-            Reserva
+            Reservar
           </button>
         </div>
       )}
