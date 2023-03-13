@@ -73,7 +73,7 @@ export default function Details() {
 
   setTimeout(() => {
     setLoading(false)
-  }, 3000);
+  }, 2000);
 
   const handleClick = (e) => {
     e.preventDefault(e);

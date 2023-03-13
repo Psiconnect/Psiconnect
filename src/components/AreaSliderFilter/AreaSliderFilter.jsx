@@ -65,7 +65,7 @@ export default function AreaSliderFilter() {
             },
           }}
         >
-          {areas?.map((e) => {
+          {areas?.filter( a => !!a.state).map((e) => {
             return (
               <SwiperSlide key={e.id}>
                 <div className={style.card}>
